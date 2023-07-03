@@ -1,0 +1,30 @@
+form, .for-login{
+	margin:10% 40% 0 40%;
+		
+}
+form, #new_form{
+	margin:0;
+}
+
+table, .table td input{
+	border:0;	
+	
+}
+
+input{
+	
+}
+
+div, .card, .shadow-2-strong, .card-registration{
+/*	margin:7% 5% 0 5%;*/
+}
+
+ .dropdown{
+		position: absolute;
+		right:40px;
+}
+
+button, #new_form{
+
+	padding: 10px;
+}

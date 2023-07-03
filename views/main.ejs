@@ -1,0 +1,89 @@
+<%- include("partials/header"); -%>
+<%- include("head"); -%>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">App</th>
+      <th scope="col">email/User Name</th>
+      <th scope="col">Password</th>
+      <th scope="col">View Password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% data.forEach(function(data,i){ %>
+      <th scope="row"><%= i+1%></th>
+
+      <td> <%= data.app %></td> 
+      <td><%= data.email  %></td>
+      <td><input  id=<%= i+1%> type="password" value=<%=data.password%> readonly ></td> 
+      <td><button class="btn btn-info" id="ViewBtn+<%= i+1%>"onclick="unhidePass(<%= i+1%>)">View</button></td>
+      <form action="/delete" method=post>
+        <input name="id" value="<%=data._id%>" style="display:none;">
+      <td><button type="submit"class="btn btn-danger" id="DeleteBtn+<%= i+1%>">Delete</button></td>
+      </form>
+    </tr>
+<% }) %>
+
+  </tbody>
+</table>
+
+<!-- New Entry -->
+
+
+<div id="new_form"  style="display:none;">
+    <form action="/newEntry" method="post">
+    	<table class="table">
+    		<thead>
+    			<tr>
+  	    		<th scope="row">+</th>
+      			<td><input size="15"placeholder="Application" name='app'></td> 
+      			<td><input size="15"placeholder="Email/User Name" name='email'></td>
+      			<td><input size="15"placeholder="Password" id="randomPass" type="text"name="pass"></td>
+      			<td><a class="btn btn-primary" onclick="generate()">Generate </td>
+    			</tr>
+    		</thead>
+    	</table>
+      			<button type="submit" class="btn btn-success">Submit</button>    	 
+    </form>
+</div>
+<button class="btn btn-primary" id="addBtn" onclick="unhideNewEntry()">Add</button>
+
+
+
+
+  <script>
+  	function unhideNewEntry(){
+  		var x = document.getElementById('new_form');
+      var y = document.getElementById('addBtn');
+  		if(x.style.display === 'none') {
+    		x.style.display = 'block';
+        y.style.display = 'none'
+    	}
+  		else{
+    		x.style.display = 'none';
+        y.style.display = 'block'
+    	}
+    }
+  	function unhidePass(id){
+		var x = document.getElementById(id);
+    
+  
+  		if(x.type==='password'){
+			x.type="text"; 
+		}
+  		else{
+		x.type="password";		
+	}
+}
+function generate(){
+	const range ="ABCDEFGHIJKLMNOPQRSTUVWKYZabcdefghijklmnopqrstuvwxzy0123456789!@#$%&*";
+	var password=""	
+	for(var i=0;i<=12;i++){
+		password=password.concat(range.charAt(Math.floor(Math.random()*range.length)));
+	}
+	document.getElementById("randomPass").value=password
+}
+  </script>
