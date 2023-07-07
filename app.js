@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const ejs = require('ejs');
 const app = express();
 const port = process.env.PORT || 3000;
-const url = 'mongodb+srv://admin-balu:Answer.com628@cluster0.gt42y.mongodb.net/';
+const url = 'mongodb+srv://admin-<>@cluster0.gt42y.mongodb.net/';
 mongoose.connect(url);
 
 
