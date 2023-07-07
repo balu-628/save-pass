@@ -4,7 +4,7 @@ const cookieParser=require('cookie-parser');
 const mongoose = require('mongoose');
 const ejs = require('ejs');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const url = 'mongodb+srv://admin-balu:Answer.com628@cluster0.gt42y.mongodb.net/';
 mongoose.connect(url);
 
